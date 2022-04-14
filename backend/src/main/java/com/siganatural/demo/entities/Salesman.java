@@ -1,6 +1,8 @@
 package com.siganatural.demo.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "salesman")
@@ -14,6 +16,9 @@ public class Salesman {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "salesman")
+    private List<Sale> sales = new ArrayList<>();
 
     public Salesman(){}
 

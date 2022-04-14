@@ -1,6 +1,7 @@
 package com.siganatural.demo.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,9 @@ public class Pharmacy {
 
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "pharmacy")
     private Address address;
+
+    @OneToMany(mappedBy = "pharmacy")
+    private List<Sale> sales = new ArrayList<>();
 
     public Pharmacy(){}
 
