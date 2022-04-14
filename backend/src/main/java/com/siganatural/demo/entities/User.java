@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
-@Inheritance(strategy = InheritanceType.JOINED) //Como está é uma super classe as suas filhas terão tabelas únicas com essa estratégia
 public class User {
 
     @Id
