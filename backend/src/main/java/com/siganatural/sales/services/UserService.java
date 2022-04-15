@@ -26,18 +26,14 @@ public class UserService implements UserDetailsService {
 
     @Transactional(readOnly = true)
     public List<UserDTO> findUsers(){
-        User userAuth = authService.userAuthenticated();
-        boolean isMain = userAuth.hasRole("ROLE_MAIN");
-        if (isMain){
-            List<User> list = repository.findAll();
-            return list.stream().map(u -> new UserDTO(u)).collect(Collectors.toList());
-        }
-        throw new ForbiddenException("Access denied");
+        authService.isMain(); //Verifica se a requisição vem de um role_main
+        List<User> list = repository.findAll();
+        return list.stream().map(u -> new UserDTO(u)).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id){
-
+        authService.validateSelfOrMain(id); //Verifica se a consulta é feita pelo o dono do id ou se é MAIN
         User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         return new UserDTO(user);
     }

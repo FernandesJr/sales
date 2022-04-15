@@ -3,6 +3,7 @@ package com.siganatural.sales.services;
 import com.siganatural.sales.entities.User;
 import com.siganatural.sales.repositories.UserRepository;
 import com.siganatural.sales.services.exceptions.ForbiddenException;
+import com.siganatural.sales.services.exceptions.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,20 @@ public class AuthService {
             User user = userRepository.findByEmail(userName);
             return user;
         }catch (Exception e){
-            throw null;///new UnauthorizedException("Invalid user"); //Somente por segurança
+            throw new UnauthorizedException("Invalid user"); //Somente por segurança
         }
     }
 
     public void validateSelfOrMain(Long idUser){
         User user = userAuthenticated(); //Usuário logado no SpringSecurity
-        if(!user.getId().equals(idUser) && !user.hasRole("ROLE_ADMIN")){
+        if(!user.getId().equals(idUser) && !user.hasRole("ROLE_MAIN")){
+            throw new ForbiddenException("Access denied");
+        }
+    }
+
+    public void isMain(){
+        User user = userAuthenticated(); //Usuário logado no SpringSecurity
+        if(!user.hasRole("ROLE_MAIN")){
             throw new ForbiddenException("Access denied");
         }
     }
