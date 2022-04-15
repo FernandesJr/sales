@@ -127,4 +127,13 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public boolean hasRole(String authority){
+        for(Role r : roles){
+            if (r.getAuthority().equals(authority)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

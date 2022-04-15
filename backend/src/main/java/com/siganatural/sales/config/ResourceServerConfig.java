@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -44,6 +45,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/oauth/token", "/h2-console/**").permitAll()
+
+                //USER
+                .antMatchers("/roles/**").hasRole(ROLE_MAIN)
+
+                //USER
+                .antMatchers(HttpMethod.POST, "/users").hasRole(ROLE_MAIN)
+                .antMatchers("/users").hasAnyRole(ROLE_MAIN, ROLE_ADMIN, ROLE_SALESMAN)
+
                 .anyRequest().authenticated(); //Informando que qualquer outra rota não especificada será necessário se autenticar
 
         //Configuração especial para rodar o H2 com a segurança dos recursos
