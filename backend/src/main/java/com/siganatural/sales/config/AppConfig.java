@@ -1,4 +1,4 @@
-package com.siganatural.demo.config;
+package com.siganatural.sales.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

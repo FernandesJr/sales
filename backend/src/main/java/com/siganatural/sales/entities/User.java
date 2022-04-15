@@ -1,4 +1,4 @@
-package com.siganatural.demo.entities;
+package com.siganatural.sales.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -125,6 +125,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return active;
+        return true;
     }
 }

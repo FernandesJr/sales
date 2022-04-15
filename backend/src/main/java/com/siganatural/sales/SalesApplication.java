@@ -1,4 +1,4 @@
-package com.siganatural.demo;
+package com.siganatural.sales;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

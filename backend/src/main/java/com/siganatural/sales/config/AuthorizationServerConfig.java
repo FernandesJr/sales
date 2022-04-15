@@ -1,7 +1,7 @@
-package com.siganatural.demo.config;
+package com.siganatural.sales.config;
 
 
-import com.siganatural.demo.components.JwtTokenEnhancer;
+import com.siganatural.sales.components.JwtTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

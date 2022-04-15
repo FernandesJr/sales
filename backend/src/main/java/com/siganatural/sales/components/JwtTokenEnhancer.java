@@ -1,7 +1,7 @@
-package com.siganatural.demo.components;
+package com.siganatural.sales.components;
 
-import com.siganatural.demo.entities.User;
-import com.siganatural.demo.repositories.UserRepository;
+import com.siganatural.sales.entities.User;
+import com.siganatural.sales.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;

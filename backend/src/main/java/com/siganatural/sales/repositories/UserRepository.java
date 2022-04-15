@@ -1,6 +1,6 @@
-package com.siganatural.demo.repositories;
+package com.siganatural.sales.repositories;
 
-import com.siganatural.demo.entities.User;
+import com.siganatural.sales.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -1,4 +1,4 @@
-package com.siganatural.demo.entities;
+package com.siganatural.sales.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;

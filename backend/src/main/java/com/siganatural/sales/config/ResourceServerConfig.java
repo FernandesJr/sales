@@ -1,4 +1,4 @@
-package com.siganatural.demo.config;
+package com.siganatural.sales.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -43,7 +43,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(PUBLIC).permitAll()
+                .antMatchers("/oauth/token", "/h2-console/**").permitAll()
                 .anyRequest().authenticated(); //Informando que qualquer outra rota não especificada será necessário se autenticar
 
         //Configuração especial para rodar o H2 com a segurança dos recursos
