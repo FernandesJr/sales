@@ -1,6 +1,5 @@
 package com.siganatural.sales.dto;
 
-import com.siganatural.sales.entities.Role;
 import com.siganatural.sales.entities.User;
 
 import java.io.Serializable;
@@ -14,7 +13,7 @@ public class UserDTO implements Serializable {
     private String firstName;
     private String lastName;
     private boolean active;
-    private Set<Role> roles = new HashSet<>();
+    private Set<RoleDTO> roles = new HashSet<>();
 
     public UserDTO(){}
 
@@ -32,7 +31,7 @@ public class UserDTO implements Serializable {
         this.firstName = entity.getFirstName();
         this.lastName = entity.getLastName();
         this.active = entity.isActive();
-        this.roles = entity.getRoles();
+        entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
     }
 
     public Long getId() {
@@ -75,7 +74,7 @@ public class UserDTO implements Serializable {
         this.active = active;
     }
 
-    public Set<Role> getRoles() {
+    public Set<RoleDTO> getRoles() {
         return roles;
     }
 }
