@@ -2,6 +2,9 @@ package com.siganatural.sales.dto;
 
 import com.siganatural.sales.entities.User;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,9 +12,18 @@ import java.util.Set;
 public class UserDTO implements Serializable {
 
     private Long id;
+
+    @Email(message = "Por favor insira um email valido")
     private String email;
+
+    @Size(min = 3, message = "nome não pode ser menor que 3 caracteres")
+    @NotBlank(message = "nome requerido")
     private String firstName;
+
+    @Size(min = 3, message = "sobrenome não pode ser menor que 3 caracteres")
+    @NotBlank(message = "sobrenome requerido")
     private String lastName;
+
     private boolean active;
     private Set<RoleDTO> roles = new HashSet<>();
 

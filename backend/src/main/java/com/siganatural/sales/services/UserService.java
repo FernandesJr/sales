@@ -2,12 +2,11 @@ package com.siganatural.sales.services;
 
 import com.siganatural.sales.dto.RoleDTO;
 import com.siganatural.sales.dto.UserDTO;
-import com.siganatural.sales.dto.UserDTOInsert;
-import com.siganatural.sales.entities.Role;
+import com.siganatural.sales.dto.UserInsertDTO;
+import com.siganatural.sales.dto.UserUpdateDTO;
 import com.siganatural.sales.entities.User;
 import com.siganatural.sales.repositories.RoleRepository;
 import com.siganatural.sales.repositories.UserRepository;
-import com.siganatural.sales.services.exceptions.ForbiddenException;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,15 +49,27 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public UserDTO insert(UserDTOInsert dto){
-        //Verficar se a senha tem mais de 6 caracteres
+    public UserDTO insert(UserInsertDTO dto){
         User user = new User();
         copyDtoToEntity(dto, user);
         repository.save(user);
         return new UserDTO(user);
     }
 
-    public void copyDtoToEntity(UserDTOInsert dto, User user){
+    @Transactional
+    public UserDTO update(UserUpdateDTO dto, Long id){
+        authService.validateSelfOrMain(id); //Verifica se a consulta é feita pelo o dono do id ou se é MAIN
+        User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+        if(!dto.passwordIsNull()){
+            user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        }
+        user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
+        user.setActive(dto.isActive());
+        return new UserDTO(user);
+    }
+
+    public void copyDtoToEntity(UserInsertDTO dto, User user){
         user.setEmail(dto.getEmail());
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
