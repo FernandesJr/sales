@@ -1,9 +1,12 @@
 package com.siganatural.sales.dto;
 
+import com.siganatural.sales.services.validation.UserUpdateValid;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@UserUpdateValid
 public class UserUpdateDTO implements Serializable {
 
     @NotBlank(message = "nome requerido")
@@ -12,11 +15,11 @@ public class UserUpdateDTO implements Serializable {
     @NotBlank(message = "sobrenome requerido")
     private String lastName;
 
-    @Size(min = 6)
+    @Size(min = 6, max = 255)
     @NotBlank(message = "senha não pode ser menor que 6 caracteres")
     private String password;
 
-    @Size(min = 6)
+    @Size(min = 6, max = 255)
     @NotBlank(message = "confirme sua nova senha, por favor.")
     private String passwordConfirm;
 

@@ -58,7 +58,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public UserDTO update(UserUpdateDTO dto, Long id){
-        authService.validateSelfOrMain(id); //Verifica se a consulta é feita pelo o dono do id ou se é MAIN
+        authService.isMe(id); //Somente o dono do id pode alterar seus atributos
         User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         if(!dto.passwordIsNull()){
             user.setPassword(passwordEncoder.encode(dto.getPassword()));

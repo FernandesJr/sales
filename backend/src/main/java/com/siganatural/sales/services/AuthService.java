@@ -40,4 +40,11 @@ public class AuthService {
             throw new ForbiddenException("Access denied");
         }
     }
+
+    public void isMe(Long id){
+        User user = this.userAuthenticated();
+        if(!user.getId().equals(id)){
+            throw new ForbiddenException("Access denied");
+        }
+    }
 }
