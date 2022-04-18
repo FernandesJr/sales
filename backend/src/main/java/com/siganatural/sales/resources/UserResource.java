@@ -47,4 +47,10 @@ public class UserResource {
         UserDTO userDTO = service.update(dto, id);
         return ResponseEntity.ok(userDTO);
     }
+
+    @PutMapping("/active/{id}")
+    public ResponseEntity<Void> activeUser(@RequestParam("active") boolean active, @PathVariable Long id){
+        service.activeUser(id, active);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -8,6 +8,7 @@ import com.siganatural.sales.entities.User;
 import com.siganatural.sales.repositories.RoleRepository;
 import com.siganatural.sales.repositories.UserRepository;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
+import com.siganatural.sales.services.exceptions.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -69,6 +70,12 @@ public class UserService implements UserDetailsService {
         return new UserDTO(user);
     }
 
+    @Transactional
+    public void activeUser(Long id, boolean active){
+        User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+        user.setActive(active);
+    }
+
     public void copyDtoToEntity(UserInsertDTO dto, User user){
         user.setEmail(dto.getEmail());
         user.setFirstName(dto.getFirstName());
@@ -82,6 +89,10 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByEmail(username);
+        User user = repository.findByEmail(username);
+        if(user == null || user.isActive()){
+            throw new UnauthorizedException("invalid credencies or user not active");
+        }
+        return user;
     }
 }

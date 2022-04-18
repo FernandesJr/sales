@@ -2,6 +2,7 @@ package com.siganatural.sales.resources.exception;
 
 import com.siganatural.sales.services.exceptions.ForbiddenException;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
+import com.siganatural.sales.services.exceptions.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -28,12 +29,24 @@ public class ResouceExceptionHandler {
     }
 
     @ExceptionHandler(ForbiddenException.class) //Capturando exception específica
-    public ResponseEntity<StandardError> notFoundExceptionResponseEntity(ForbiddenException e, HttpServletRequest request){
+    public ResponseEntity<StandardError> forbidden(ForbiddenException e, HttpServletRequest request){
         HttpStatus status = HttpStatus.FORBIDDEN;
         StandardError error = new StandardError();
         error.setTimestamp(Instant.now());
         error.setStatus(status.value());
         error.setError("Forbidden");
+        error.setMessage(e.getMessage());
+        error.setPath(request.getRequestURI());
+        return ResponseEntity.status(status).body(error);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class) //Capturando exception específica
+    public ResponseEntity<StandardError> loginInvalid(UnauthorizedException e, HttpServletRequest request){
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+        StandardError error = new StandardError();
+        error.setTimestamp(Instant.now());
+        error.setStatus(status.value());
+        error.setError("Unauthorized");
         error.setMessage(e.getMessage());
         error.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(error);

@@ -51,6 +51,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
                 //USER
                 .antMatchers(HttpMethod.POST, "/users").hasRole(ROLE_MAIN)
+                .antMatchers("/users/active/**").hasRole(ROLE_MAIN)
                 .antMatchers("/users").hasAnyRole(ROLE_MAIN, ROLE_ADMIN, ROLE_SALESMAN)
 
                 .anyRequest().authenticated(); //Informando que qualquer outra rota não especificada será necessário se autenticar
