@@ -4,6 +4,7 @@ import com.siganatural.sales.entities.Product;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 public class ProductDTO {
@@ -17,6 +18,7 @@ public class ProductDTO {
     @Size(min = 3, max = 255)
     private String description;
 
+    @Positive
     @NotNull(message = "informe o preço de venda do produto")
     private Double price;
 

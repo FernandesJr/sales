@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
@@ -37,7 +38,7 @@ public class ProductResource {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> insertProduct(@RequestBody ProductDTO dto) throws IOException {
+    public ResponseEntity<ProductDTO> insertProduct(@RequestBody @Valid ProductDTO dto) throws IOException {
         dto = service.insertProduct(dto);
         //Quando se cria um novo recurso deve-se devolver um status 201
         //E no head da response por convenção declara o location do recurso criado
@@ -47,7 +48,7 @@ public class ProductResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO dto, @PathVariable Long id){
+    public ResponseEntity<ProductDTO> updateProduct(@RequestBody @Valid ProductDTO dto, @PathVariable Long id){
         dto = service.updateProduct(dto, id);
         return ResponseEntity.ok(dto);
     }
