@@ -24,29 +24,34 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
+    public List<ProductDTO> findProductsActives(){
+        return repository.findByActive(true).stream().map(p -> new ProductDTO(p)).collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
     public ProductDTO findProduct(Long id){
         Product entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         return new ProductDTO(entity);
     }
 
     @Transactional
-    public ProductDTO insertProduct(ProductDTO dto) throws IOException {
+    public ProductDTO insertProduct(ProductDTO dto){
         Product entity = new Product();
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
-        entity.setImage(dto.getImage().getBytes());
+        entity.setActive(true);
         repository.save(entity);
         return new ProductDTO(entity);
     }
 
     @Transactional
-    public ProductDTO updateProduct(ProductDTO dto) throws IOException {
-        Product entity = repository.findById(dto.getId()).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+    public ProductDTO updateProduct(ProductDTO dto, Long id) {
+        Product entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
-        entity.setImage(dto.getImage().getBytes());
+        entity.setActive(dto.isActive());
         return new ProductDTO(entity);
     }
 }

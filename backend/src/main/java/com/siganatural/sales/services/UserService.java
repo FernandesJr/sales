@@ -90,9 +90,11 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByEmail(username);
-        if(user == null || user.isActive()){
+        if(user == null || !user.isActive()){
+            System.out.println("Não encontrei o user " +username);
             throw new UnauthorizedException("invalid credencies or user not active");
         }
+        System.out.println("Encontrei o user " +username);
         return user;
     }
 }

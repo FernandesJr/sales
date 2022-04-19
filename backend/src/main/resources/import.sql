@@ -21,11 +21,11 @@ INSERT INTO pharmacy (name, cnpj, phone) VALUES ('farmácia dos trabalhadores', 
 INSERT INTO address (city, district, street, number, pharmacy_id) VALUES ('recife', 'pedro manuel', 'josé cardoso', 13, 1);
 INSERT INTO address (city, district, street, number, pharmacy_id) VALUES ('recife', 'pedro manuel', 'antonio de sá', 156, 2);
 
-INSERT INTO product (name, description, price, image) VALUES ('amargo beringela', 'excelente para o bem estar', 21.22, null);
-INSERT INTO product (name, description, price, image) VALUES ('amargo hortelã', 'o sabor refrescante da pura erva do campo', 24.14, null);
-INSERT INTO product (name, description, price, image) VALUES ('arrelique', 'a mais nova formula da tecnologia dos estudos das ervas naturais', 27.64, null);
-INSERT INTO product (name, description, price, image) VALUES ('pomada arrelique', 'alívio nas dores de forma imediata', 19.54, null);
-INSERT INTO product (name, description, price, image) VALUES ('ergo 30', 'sua juventude garantida ao decorrer do tempo', 29.44, null);
+INSERT INTO product (name, description, price, image, active) VALUES ('amargo beringela', 'excelente para o bem estar', 21.22, null, 1);
+INSERT INTO product (name, description, price, image, active) VALUES ('amargo hortelã', 'o sabor refrescante da pura erva do campo', 24.14, null, 1);
+INSERT INTO product (name, description, price, image, active) VALUES ('arrelique', 'a mais nova formula da tecnologia dos estudos das ervas naturais', 27.64, null, 1);
+INSERT INTO product (name, description, price, image, active) VALUES ('pomada arrelique', 'alívio nas dores de forma imediata', 19.54, null, 1);
+INSERT INTO product (name, description, price, image, active) VALUES ('ergo 30', 'sua juventude garantida ao decorrer do tempo', 29.44, null, 1);
 
 INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (1, 1, 7432.25, TIMESTAMP WITH TIME ZONE '2022-04-14T15:00:00Z', 'parcelado');
 INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (2, 1, 3412.17, TIMESTAMP WITH TIME ZONE '2022-04-14T15:45:00Z', 'á vista');

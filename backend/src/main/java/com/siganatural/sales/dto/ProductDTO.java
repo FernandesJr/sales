@@ -1,7 +1,6 @@
 package com.siganatural.sales.dto;
 
 import com.siganatural.sales.entities.Product;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -21,16 +20,16 @@ public class ProductDTO {
     @NotNull(message = "informe o preço de venda do produto")
     private Double price;
 
-    private MultipartFile image;
+    private boolean active;
 
     public ProductDTO(){}
 
-    public ProductDTO(Long id, String name, String description, Double price, MultipartFile image) {
+    public ProductDTO(Long id, String name, String description, Double price, boolean active) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.image = image;
+        this.active = active;
     }
 
     public ProductDTO(Product entity) {
@@ -38,7 +37,7 @@ public class ProductDTO {
         this.name = entity.getName();
         this.description = entity.getDescription();
         this.price = entity.getPrice();
-        //this.image = new MockMultipartFile("photo.png", "photo.png", "image/png", entity.getImage());
+        this.active = entity.isActive();
     }
 
     public Long getId() {
@@ -73,11 +72,11 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public MultipartFile getImage() {
-        return image;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setImage(MultipartFile image) {
-        this.image = image;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

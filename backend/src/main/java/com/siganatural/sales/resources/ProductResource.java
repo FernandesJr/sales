@@ -19,6 +19,12 @@ public class ProductResource {
     private ProductService service;
 
     @GetMapping
+    public ResponseEntity<List<ProductDTO>> findUsersActives(){
+        List<ProductDTO> list = service.findProductsActives();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/all")
     public ResponseEntity<List<ProductDTO>> findUsers(){
         List<ProductDTO> list = service.findProducts();
         return ResponseEntity.ok(list);
@@ -38,5 +44,11 @@ public class ProductResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO dto, @PathVariable Long id){
+        dto = service.updateProduct(dto, id);
+        return ResponseEntity.ok(dto);
     }
 }

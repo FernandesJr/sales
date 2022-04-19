@@ -21,6 +21,8 @@ public class Product {
     @Lob //representa um campo do tipo blob no bd
     private byte[] image;
 
+    private boolean active;
+
     public Product(){}
 
     public Product(Long id, String name, String description, Double price, byte[] image) {
@@ -69,5 +71,13 @@ public class Product {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
