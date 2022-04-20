@@ -14,8 +14,9 @@ public class Pharmacy {
     private String cnpj;
     private String name;
     private String phone;
+    private String cellphone;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "pharmacy")
+    @OneToOne(mappedBy = "pharmacy")
     private Address address;
 
     @OneToMany(mappedBy = "pharmacy")
@@ -23,11 +24,12 @@ public class Pharmacy {
 
     public Pharmacy(){}
 
-    public Pharmacy(Long id, String cnpj, String name, String phone, Address address) {
+    public Pharmacy(Long id, String cnpj, String name, String phone , String cellphone, Address address) {
         this.id = id;
         this.cnpj = cnpj;
         this.name = name;
         this.phone = phone;
+        this.cellphone = cellphone;
         this.address = address;
     }
 
@@ -69,5 +71,17 @@ public class Pharmacy {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getCellphone() {
+        return cellphone;
+    }
+
+    public void setCellphone(String cellphone) {
+        this.cellphone = cellphone;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
     }
 }
