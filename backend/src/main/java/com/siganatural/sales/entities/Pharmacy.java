@@ -24,6 +24,8 @@ public class Pharmacy {
 
     public Pharmacy(){}
 
+    public Pharmacy(Long id){this.id = id;}
+
     public Pharmacy(Long id, String cnpj, String name, String phone , String cellphone, Address address) {
         this.id = id;
         this.cnpj = cnpj;
@@ -83,5 +85,9 @@ public class Pharmacy {
 
     public List<Sale> getSales() {
         return sales;
+    }
+
+    public void toLower(){
+        this.name = this.name.toLowerCase();
     }
 }

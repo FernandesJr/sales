@@ -16,6 +16,7 @@ public class Product {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
     private Double price;
 
     @Lob //representa um campo do tipo blob no bd

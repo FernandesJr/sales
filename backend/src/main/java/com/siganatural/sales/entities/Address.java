@@ -1,5 +1,7 @@
 package com.siganatural.sales.entities;
 
+import com.siganatural.sales.dto.AddressDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -26,6 +28,14 @@ public class Address {
         this.district = district;
         this.street = street;
         this.number = number;
+    }
+
+    public Address(AddressDTO dto) {
+        this.id = dto.getId();
+        this.city = dto.getCity();
+        this.district = dto.getDistrict();
+        this.street = dto.getStreet();
+        this.number = dto.getNumber();
     }
 
     public Long getId() {
@@ -66,5 +76,13 @@ public class Address {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    public Pharmacy getPharmacy() {
+        return pharmacy;
+    }
+
+    public void setPharmacy(Pharmacy pharmacy) {
+        this.pharmacy = pharmacy;
     }
 }

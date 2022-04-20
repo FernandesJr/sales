@@ -1,7 +1,9 @@
 package com.siganatural.sales.dto;
 
 import com.siganatural.sales.entities.Pharmacy;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,6 +27,7 @@ public class PharmacyDTO implements Serializable {
     @Size(min = 14, max = 14)
     private String cellphone;
 
+    @Valid
     @NotNull(message = "endereço é requerido")
     private AddressDTO addressDTO;
 
