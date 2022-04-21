@@ -39,4 +39,10 @@ public class PharmacyResource {
                 .buildAndExpand(pharmacyDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(pharmacyDTO);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PharmacyDTO> update(@RequestBody @Valid PharmacyDTO dto, @PathVariable Long id){
+        PharmacyDTO pharmacyDTO = service.update(dto, id);
+        return ResponseEntity.ok(pharmacyDTO);
+    }
 }

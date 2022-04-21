@@ -20,8 +20,6 @@ public class PharmacyService {
     @Autowired
     private AddressService addressService;
 
-
-
     @Transactional(readOnly = true)
     public Page<PharmacyDTO> findPharmacies(Pageable pageable, String name){
         Page<Pharmacy> page = repository.findAllOrByName(pageable, name);
@@ -46,6 +44,22 @@ public class PharmacyService {
         entity.toLower(); //Para salvar os campos String em letras minúsculas, influência na busca por name, Letras maiúsculas tem maior precedência
         entity = repository.save(entity);
         Address address = addressService.insert(dto.getAddressDTO(), entity.getId());
+        entity.setAddress(address);
+        return new PharmacyDTO(entity);
+    }
+
+    @Transactional
+    public PharmacyDTO update(PharmacyDTO dto, Long id){
+        Pharmacy entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+        entity.setCnpj(dto.getCnpj());
+        entity.setName(dto.getName());
+        entity.setPhone(dto.getPhone());
+        entity.setCellphone(dto.getCellphone());
+        entity.setEmail(dto.getEmail());
+        entity.setActive(dto.isActive());
+        entity.toLower(); //Para salvar os campos String em letras minúsculas, influência na busca por name, Letras maiúsculas tem maior precedência
+        entity = repository.save(entity);
+        Address address = addressService.update(dto.getAddressDTO(), entity);
         entity.setAddress(address);
         return new PharmacyDTO(entity);
     }

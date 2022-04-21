@@ -6,7 +6,6 @@ import com.siganatural.sales.entities.Pharmacy;
 import com.siganatural.sales.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AddressService {
@@ -22,6 +21,15 @@ public class AddressService {
         entity.setStreet(dto.getStreet());
         entity.setNumber(dto.getNumber());
         entity.setPharmacy(new Pharmacy(idPharmacy));
+        return repository.save(entity);
+    }
+
+    public Address update(AddressDTO dto, Pharmacy pharmacy){
+        Address entity = repository.findByPharmacy(pharmacy);
+        entity.setCity(dto.getCity());
+        entity.setDistrict(dto.getDistrict());
+        entity.setStreet(dto.getStreet());
+        entity.setNumber(dto.getNumber());
         return repository.save(entity);
     }
 }
