@@ -3,7 +3,9 @@ package com.siganatural.sales.entities;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "sale")
@@ -30,7 +32,7 @@ public class Sale {
 
     //No many to many não tem a possibilidade de adicionar outro campo na tabela, assim crie um objeto que representa o relacionamento
     @Transient //Informando ao Hibernate que não quero persistir esse atributo
-    private List<Product> products = new ArrayList<>();
+    private Set<Product> products = new HashSet<>();
 
     @OneToOne(mappedBy = "sale")
     private SaleProduct saleProduct;
@@ -84,7 +86,23 @@ public class Sale {
         this.salesman = salesman;
     }
 
-    /*public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
-    }*/
+    }
+
+    public String getFormPay() {
+        return formPay;
+    }
+
+    public void setFormPay(String formPay) {
+        this.formPay = formPay;
+    }
+
+    public Nf getNf() {
+        return nf;
+    }
+
+    public void setNf(Nf nf) {
+        this.nf = nf;
+    }
 }
