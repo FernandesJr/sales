@@ -4,6 +4,7 @@ import com.siganatural.sales.entities.Pharmacy;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,9 +28,14 @@ public class PharmacyDTO implements Serializable {
     @Size(min = 14, max = 14)
     private String cellphone;
 
+    @Email(message = "por favor, informe um email válido")
+    private String email;
+
     @Valid
     @NotNull(message = "endereço é requerido")
     private AddressDTO addressDTO;
+
+    private boolean active;
 
     public PharmacyDTO(){}
 
@@ -48,6 +54,8 @@ public class PharmacyDTO implements Serializable {
         this.cnpj = entity.getCnpj();
         this.phone = entity.getPhone();
         this.cellphone = entity.getCellphone();
+        this.email = entity.getEmail();
+        this.active = entity.isActive();
         this.addressDTO = new AddressDTO(entity.getAddress());
     }
 
@@ -97,5 +105,21 @@ public class PharmacyDTO implements Serializable {
 
     public void setCellphone(String cellphone) {
         this.cellphone = cellphone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

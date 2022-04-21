@@ -41,6 +41,8 @@ public class PharmacyService {
         entity.setName(dto.getName());
         entity.setPhone(dto.getPhone());
         entity.setCellphone(dto.getCellphone());
+        entity.setEmail(dto.getEmail());
+        entity.setActive(true);
         entity.toLower(); //Para salvar os campos String em letras minúsculas, influência na busca por name, Letras maiúsculas tem maior precedência
         entity = repository.save(entity);
         Address address = addressService.insert(dto.getAddressDTO(), entity.getId());

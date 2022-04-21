@@ -15,8 +15,8 @@ INSERT INTO user_role (user_id, role_id) VALUES (3, 3);
 
 INSERT INTO salesman (goal, user_id) VALUES (40000.0, 2);
 
-INSERT INTO pharmacy (name, cnpj, phone, cellphone) VALUES ('drogvida', '123.154.00/0001-15', '8137264444','81995245698');
-INSERT INTO pharmacy (name, cnpj, phone, cellphone) VALUES ('farmácia dos trabalhadores', '999.536.00/0001-34', '8137265555', '81995245698');
+INSERT INTO pharmacy (name, cnpj, phone, cellphone, email, active) VALUES ('drogvida', '123.154.00/0001-15', '8137264444','81995245698', 'drogvida@email.com', 1);
+INSERT INTO pharmacy (name, cnpj, phone, cellphone, email, active) VALUES ('farmácia dos trabalhadores', '999.536.00/0001-34', '8137265555', '81995245698', 'fdt@email.com', 1);
 
 INSERT INTO address (city, district, street, number, pharmacy_id) VALUES ('recife', 'pedro manuel', 'josé cardoso', 13, 1);
 INSERT INTO address (city, district, street, number, pharmacy_id) VALUES ('recife', 'pedro manuel', 'antonio de sá', 156, 2);
