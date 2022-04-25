@@ -29,13 +29,16 @@ INSERT INTO product (name, description, price, image, active) VALUES ('ergo 30',
 
 INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (1, 1, 7432.25, TIMESTAMP WITH TIME ZONE '2022-04-14T15:00:00Z', 'parcelado');
 INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (2, 1, 3412.17, TIMESTAMP WITH TIME ZONE '2022-04-14T15:45:00Z', 'á vista');
+INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (2, 1, 1500.17, TIMESTAMP WITH TIME ZONE '2022-04-25T18:45:00Z', 'á vista');
 
-INSERT INTO sale_product (sale_id, product_id, quantity_product) VALUES (1, 2, 55);
-INSERT INTO sale_product (sale_id, product_id, quantity_product) VALUES (1, 4, 80);
-INSERT INTO sale_product (sale_id, product_id, quantity_product) VALUES (1, 5, 10);
+INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (1, 2, 55, 24.14);
+INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (1, 4, 80, 19.54);
+INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (1, 5, 10, 29.44);
 
-INSERT INTO sale_product (sale_id, product_id, quantity_product) VALUES (2, 5, 10);
-INSERT INTO sale_product (sale_id, product_id, quantity_product) VALUES (2, 1, 30);
+INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (2, 5, 10, 29.44);
+INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (2, 1, 30, 21.22);
+
+INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (3, 1, 70, 21.22);
 
 INSERT INTO ticket (sale_id, amount, due_date, image, paid) VALUES (1, 3716.12, TIMESTAMP WITH TIME ZONE '2022-05-14T15:45:00Z', null, 0);
 INSERT INTO ticket (sale_id, amount, due_date, image, paid) VALUES (1, 3716.12, TIMESTAMP WITH TIME ZONE '2022-06-14T15:45:00Z', null, 0);

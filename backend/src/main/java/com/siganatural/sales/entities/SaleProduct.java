@@ -11,6 +11,7 @@ public class SaleProduct {
     private Long id;
     private Long productId;
     private Integer quantityProduct;
+    private Double priceProduct;
 
     @OneToOne
     @JoinColumn(name = "sale_id")
@@ -18,9 +19,10 @@ public class SaleProduct {
 
     public SaleProduct(){}
 
-    public SaleProduct(Long saleId, Long productId, Integer quantityOfProduct, Sale sale) {
+    public SaleProduct(Long saleId, Long productId, Integer quantityOfProduct, Double priceProduct, Sale sale) {
         this.productId = productId;
         this.quantityProduct = quantityOfProduct;
+        this.priceProduct = priceProduct;
         this.sale = sale;
     }
 
@@ -54,5 +56,13 @@ public class SaleProduct {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Double getPriceProduct() {
+        return priceProduct;
+    }
+
+    public void setPriceProduct(Double priceProduct) {
+        this.priceProduct = priceProduct;
     }
 }
