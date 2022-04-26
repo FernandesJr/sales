@@ -9,7 +9,7 @@ public interface SaleAdmProjection {
     String getPharmacy();
     String getSalesman();
     Instant getDate();
-    String getFormPay();
+    String getPay();
     Double getAmount();
     Long getTicket();
     Long getNf();

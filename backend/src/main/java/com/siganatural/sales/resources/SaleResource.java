@@ -1,6 +1,6 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.SaleAdnViewDTO;
+import com.siganatural.sales.dto.SaleAdmViewDTO;
 import com.siganatural.sales.dto.SaleDTO;
 import com.siganatural.sales.services.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +27,11 @@ public class SaleResource {
     }
 
     @GetMapping("/adm")
-    public ResponseEntity<Page<SaleAdnViewDTO>> findSalesAdm(Pageable pageable,
+    public ResponseEntity<Page<SaleAdmViewDTO>> findSalesAdm(Pageable pageable,
                                                              @RequestParam(name = "cnpj", defaultValue = "") String cnpj,
                                                              @RequestParam(name = "noNf", defaultValue = "") String noNf,
                                                              @RequestParam(name = "noTicket", defaultValue = "") String noTicket){
-        Page<SaleAdnViewDTO> page = service.findSalesAdm(pageable, cnpj, noNf, noTicket);
+        Page<SaleAdmViewDTO> page = service.findSalesAdm(pageable, cnpj, noNf, noTicket);
         return ResponseEntity.ok(page);
     }
 }

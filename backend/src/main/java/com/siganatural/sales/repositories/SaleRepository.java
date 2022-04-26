@@ -16,7 +16,7 @@ public interface SaleRepository extends PagingAndSortingRepository<Sale, Long> {
 
     //Os left join me indicam se aquela venda tem ou não algum boleto
     @Query(nativeQuery = true, value = "SELECT DISTINCT SALE.ID, PHARMACY.NAME AS PHARMACY, PHARMACY.CNPJ, " +
-            "CONCAT(USER.FIRST_NAME, ' ',USER.LAST_NAME) AS SALESMAN, SALE.DATE, SALE.FORM_PAY, SALE.AMOUNT, " +
+            "CONCAT(USER.FIRST_NAME, ' ',USER.LAST_NAME) AS SALESMAN, SALE.DATE, SALE.FORM_PAY AS PAY, SALE.AMOUNT, " +
             "TICKET.SALE_ID AS TICKET, NF.SALE_ID AS NF " +
             "FROM SALE " +
             "INNER JOIN PHARMACY ON " +

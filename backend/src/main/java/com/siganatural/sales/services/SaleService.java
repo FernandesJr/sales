@@ -1,6 +1,6 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.SaleAdnViewDTO;
+import com.siganatural.sales.dto.SaleAdmViewDTO;
 import com.siganatural.sales.dto.SaleDTO;
 import com.siganatural.sales.entities.Sale;
 import com.siganatural.sales.projections.SaleAdmProjection;
@@ -24,8 +24,8 @@ public class SaleService {
     }
 
     @Transactional(readOnly = true)
-    public Page<SaleAdnViewDTO> findSalesAdm(Pageable pageable, String cnpj, String noNf, String noTicket){
+    public Page<SaleAdmViewDTO> findSalesAdm(Pageable pageable, String cnpj, String noNf, String noTicket){
         Page<SaleAdmProjection> page = repository.findSalesAdm(pageable, cnpj, noNf, noTicket);
-        return page.map(s -> new SaleAdnViewDTO(s));
+        return page.map(s -> new SaleAdmViewDTO(s));
     }
 }
