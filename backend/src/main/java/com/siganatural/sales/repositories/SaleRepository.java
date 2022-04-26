@@ -16,7 +16,7 @@ public interface SaleRepository extends PagingAndSortingRepository<Sale, Long> {
 
     //Os left join me indicam se aquela venda tem ou não algum boleto
     @Query(nativeQuery = true, value = "SELECT DISTINCT SALE.ID, PHARMACY.NAME AS PHARMACY, PHARMACY.CNPJ, " +
-            "CONCAT(USER.FIRST_NAME, ' ',USER.LAST_NAME) AS SALESMAN, SALE.DATE, SALE.AMOUNT, " +
+            "CONCAT(USER.FIRST_NAME, ' ',USER.LAST_NAME) AS SALESMAN, SALE.DATE, SALE.FORM_PAY, SALE.AMOUNT, " +
             "TICKET.SALE_ID AS TICKET, NF.SALE_ID AS NF " +
             "FROM SALE " +
             "INNER JOIN PHARMACY ON " +
@@ -29,6 +29,8 @@ public interface SaleRepository extends PagingAndSortingRepository<Sale, Long> {
             "TICKET.SALE_ID = SALE.ID " +
             "LEFT JOIN NF ON " +
             "NF.SALE_ID = SALE.ID " +
-            "WHERE :cnpj = '' OR PHARMACY.CNPJ = :cnpj")
-    Page<SaleAdmProjection> findSalesAdm(Pageable pageable, String cnpj);
+            "WHERE (:cnpj = '' OR PHARMACY.CNPJ = :cnpj) AND " +
+            "(:noNf = '' OR SALE.ID NOT IN (SELECT SALE_ID FROM NF)) AND " +
+            "(:noTicket = '' OR SALE.ID NOT IN (SELECT SALE_ID FROM TICKET))")
+    Page<SaleAdmProjection> findSalesAdm(Pageable pageable, String cnpj, String noNf, String noTicket);
 }

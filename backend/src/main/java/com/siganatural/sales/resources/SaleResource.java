@@ -28,8 +28,10 @@ public class SaleResource {
 
     @GetMapping("/adm")
     public ResponseEntity<Page<SaleAdnViewDTO>> findSalesAdm(Pageable pageable,
-                                                             @RequestParam(name = "cnpj", defaultValue = "") String cnpj ){
-        Page<SaleAdnViewDTO> page = service.findSalesAdm(pageable, cnpj);
+                                                             @RequestParam(name = "cnpj", defaultValue = "") String cnpj,
+                                                             @RequestParam(name = "noNf", defaultValue = "") String noNf,
+                                                             @RequestParam(name = "noTicket", defaultValue = "") String noTicket){
+        Page<SaleAdnViewDTO> page = service.findSalesAdm(pageable, cnpj, noNf, noTicket);
         return ResponseEntity.ok(page);
     }
 }

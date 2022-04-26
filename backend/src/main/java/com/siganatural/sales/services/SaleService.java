@@ -24,8 +24,8 @@ public class SaleService {
     }
 
     @Transactional(readOnly = true)
-    public Page<SaleAdnViewDTO> findSalesAdm(Pageable pageable, String cnpj){
-        Page<SaleAdmProjection> page = repository.findSalesAdm(pageable, cnpj);
+    public Page<SaleAdnViewDTO> findSalesAdm(Pageable pageable, String cnpj, String noNf, String noTicket){
+        Page<SaleAdmProjection> page = repository.findSalesAdm(pageable, cnpj, noNf, noTicket);
         return page.map(s -> new SaleAdnViewDTO(s));
     }
 }
