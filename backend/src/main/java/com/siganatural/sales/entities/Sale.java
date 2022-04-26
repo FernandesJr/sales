@@ -43,8 +43,9 @@ public class Sale {
     @OneToOne(mappedBy = "sale")
     private Nf nf;
 
-
     public Sale(){}
+
+    public Sale(Long id){this.id = id;}
 
     public Long getId() {
         return id;

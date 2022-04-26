@@ -13,7 +13,6 @@ public class Product {
     @Column(unique = true)
     private String name;
 
-    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
