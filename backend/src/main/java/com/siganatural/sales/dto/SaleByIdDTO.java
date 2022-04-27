@@ -45,7 +45,7 @@ public class SaleByIdDTO implements Serializable {
         this.amount = projection.getAmount();
         this.date = projection.getDate();
         this.formPay = projection.getFormpay();
-        this.nfDTO = new NfDTO(projection.getNfid(), projection.getNffile());
+        this.nfDTO = new NfDTO(projection.getNfid(), projection.getNffile(), projection.getId());
     }
 
     public void insertTickets(List<Ticket> tickets){

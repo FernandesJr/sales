@@ -1,8 +1,6 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.SaleAdmViewDTO;
-import com.siganatural.sales.dto.SaleByIdDTO;
-import com.siganatural.sales.dto.SaleDTO;
+import com.siganatural.sales.dto.*;
 import com.siganatural.sales.entities.Sale;
 import com.siganatural.sales.entities.Ticket;
 import com.siganatural.sales.projections.ProductForSaleProjection;

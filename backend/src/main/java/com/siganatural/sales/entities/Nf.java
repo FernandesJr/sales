@@ -40,12 +40,12 @@ public class Nf {
     public void setImage(byte[] image) {
         this.image = image;
     }
-     /*
+
     public Sale getSale() {
         return sale;
     }
 
     public void setSale(Sale sale) {
         this.sale = sale;
-    }*/
+    }
 }

@@ -10,6 +10,7 @@ public class TicketDTO {
     private Double amount;
     private Instant dueDate;
     private boolean pay;
+    private byte[] image;
 
     public TicketDTO() {}
 
@@ -25,6 +26,7 @@ public class TicketDTO {
         this.amount = entity.getAmount();
         this.dueDate = entity.getDueDate();
         this.pay = entity.isPaid();
+        this.image = entity.getImage();
     }
 
     public Long getId() {
@@ -57,5 +59,13 @@ public class TicketDTO {
 
     public void setPay(boolean pay) {
         this.pay = pay;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
