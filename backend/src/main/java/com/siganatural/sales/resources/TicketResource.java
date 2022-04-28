@@ -2,8 +2,11 @@ package com.siganatural.sales.resources;
 
 import com.siganatural.sales.dto.SaleByIdDTO;
 import com.siganatural.sales.dto.TicketDTO;
+import com.siganatural.sales.dto.TicketNoPaidDTO;
 import com.siganatural.sales.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +35,14 @@ public class TicketResource {
     public ResponseEntity<Void> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/unpaid")
+    public ResponseEntity<Page<TicketNoPaidDTO>> noPaid(Pageable pageable,
+                                                        @RequestParam(name = "cnpj", defaultValue = "") String cnpj,
+                                                        @RequestParam(name = "saleId", defaultValue = "0") Long saleId){
+        Page<TicketNoPaidDTO> page = service.findTicketsNoPaid(pageable, cnpj, saleId);
+        return ResponseEntity.ok(page);
     }
 
 }

@@ -2,13 +2,17 @@ package com.siganatural.sales.services;
 
 import com.siganatural.sales.dto.SaleByIdDTO;
 import com.siganatural.sales.dto.TicketDTO;
+import com.siganatural.sales.dto.TicketNoPaidDTO;
 import com.siganatural.sales.entities.Sale;
 import com.siganatural.sales.entities.Ticket;
+import com.siganatural.sales.projections.TicketNoPaidProjection;
 import com.siganatural.sales.repositories.SaleRepository;
 import com.siganatural.sales.repositories.TicketRepository;
 import com.siganatural.sales.services.exceptions.ForbiddenException;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,9 +48,16 @@ public class TicketService {
         return saleService.findSaleWithProductsAndTickets(dto.getSaleId());
     }
 
+    @Transactional
     public void delete(Long id){
         Ticket ticket = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         repository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<TicketNoPaidDTO> findTicketsNoPaid(Pageable pageable, String cnpj, Long saleId){
+        Page<TicketNoPaidProjection> page = repository.findByNoPaid(pageable, cnpj, saleId);
+        return page.map(t -> new TicketNoPaidDTO(t));
     }
 
     public void dtoToEntity(TicketDTO dto){
