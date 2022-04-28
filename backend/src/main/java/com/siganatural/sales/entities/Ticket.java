@@ -2,6 +2,7 @@ package com.siganatural.sales.entities;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Objects;
 
 @Entity
 @Table(name = "ticket")
@@ -26,6 +27,8 @@ public class Ticket {
     private Sale sale;
 
     public Ticket(){}
+
+    public Ticket(Long id){this.id = id;}
 
     public Ticket(Long id, Double amount, Instant dueDate, boolean paid, byte[] image, Sale sale) {
         this.id = id;
@@ -82,5 +85,18 @@ public class Ticket {
 
     public void setSale(Sale sale) {
         this.sale = sale;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ticket)) return false;
+        Ticket ticket = (Ticket) o;
+        return getId().equals(ticket.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

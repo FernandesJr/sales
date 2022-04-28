@@ -106,4 +106,8 @@ public class Sale {
     public void setNf(Nf nf) {
         this.nf = nf;
     }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
 }
