@@ -58,6 +58,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT, "/tickets").hasAnyRole(ROLE_ADMIN, ROLE_MAIN)
                 .antMatchers(HttpMethod.DELETE, "/tickets").hasAnyRole(ROLE_ADMIN, ROLE_MAIN)
 
+                .antMatchers("/salesman").hasRole(ROLE_SALESMAN)
+
                 .anyRequest().authenticated(); //Informando que qualquer outra rota não especificada será necessário se autenticar
 
         //Configuração especial para rodar o H2 com a segurança dos recursos

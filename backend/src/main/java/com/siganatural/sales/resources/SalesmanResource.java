@@ -1,5 +1,6 @@
 package com.siganatural.sales.resources;
 
+import com.siganatural.sales.dto.SalesmanDashDTO;
 import com.siganatural.sales.services.SalesmanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,8 @@ public class SalesmanResource {
     private SalesmanService service;
 
     @GetMapping
-    public ResponseEntity<Void> dashboard(){
-        service.findDashboard();
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<SalesmanDashDTO> dashboard(){
+        SalesmanDashDTO dto = service.findDashboard();
+        return ResponseEntity.ok(dto);
     }
 }

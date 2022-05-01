@@ -54,13 +54,10 @@ public interface SaleRepository extends PagingAndSortingRepository<Sale, Long> {
             "WHERE SALE.ID = :id")
     Optional<SaleByIdProjection> findSale(Long id);
 
-    @Query("SELECT obj FROM Sale obj WHERE obj.salesman = :salesman AND obj.date BETWEEN :start AND :last")
-    List<Sale> findByMouthSalesman(Salesman salesman, Instant start, Instant last);
-
     @Query(nativeQuery = true, value = "SELECT * FROM SALE " +
             "WHERE SALE.SALESMAN_ID = :salesman AND " +
             "SALE.DATE BETWEEN :start AND :last")
-    List<Sale> findByMouthSalesmanRaiz(Long salesman, LocalDateTime start, LocalDateTime last);
+    List<Sale> findByMouthSalesman(Long salesman, LocalDateTime start, LocalDateTime last);
 
 
 }

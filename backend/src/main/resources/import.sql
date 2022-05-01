@@ -28,8 +28,8 @@ INSERT INTO product (name, description, price, image, active) VALUES ('pomada ar
 INSERT INTO product (name, description, price, image, active) VALUES ('ergo 30', 'sua juventude garantida ao decorrer do tempo', 29.44, null, 1);
 
 INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (1, 1, 7432.25, TIMESTAMP WITH TIME ZONE '2022-04-14T15:00:00Z', 'parcelado');
-INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (2, 1, 3412.17, TIMESTAMP WITH TIME ZONE '2022-04-14T15:45:00Z', 'á vista');
-INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (2, 1, 1500.17, TIMESTAMP WITH TIME ZONE '2022-04-25T18:45:00Z', 'á vista');
+INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (2, 1, 3412.17, TIMESTAMP WITH TIME ZONE '2022-05-14T15:45:00Z', 'á vista');
+INSERT INTO sale (pharmacy_id, salesman_id, amount, date, form_pay) VALUES (2, 1, 1500.17, TIMESTAMP WITH TIME ZONE '2022-05-25T18:45:00Z', 'á vista');
 
 INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (1, 2, 55, 24.14);
 INSERT INTO sale_product (sale_id, product_id, quantity_product, price_product) VALUES (1, 4, 80, 19.54);
