@@ -1,12 +1,13 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.user;
 
+import com.siganatural.sales.dto.user.UserDTO;
 import com.siganatural.sales.services.validation.UserInsertValid;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @UserInsertValid //Validação do email
-public class UserInsertDTO extends UserDTO{
+public class UserInsertDTO extends UserDTO {
 
     @Size(min = 6)
     @NotBlank(message = "senha não pode ser menor que 6 caracteres")

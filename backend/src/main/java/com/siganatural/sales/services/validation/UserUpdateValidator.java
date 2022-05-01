@@ -1,7 +1,7 @@
 package com.siganatural.sales.services.validation;
 
 
-import com.siganatural.sales.dto.UserUpdateDTO;
+import com.siganatural.sales.dto.user.UserUpdateDTO;
 import com.siganatural.sales.resources.exception.FieldMessage;
 
 import javax.validation.ConstraintValidator;

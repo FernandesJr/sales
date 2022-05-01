@@ -1,6 +1,6 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.ProductDTO;
+import com.siganatural.sales.dto.product.ProductDTO;
 import com.siganatural.sales.entities.Product;
 import com.siganatural.sales.repositories.ProductRepository;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 

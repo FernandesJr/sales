@@ -1,5 +1,6 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.user;
 
+import com.siganatural.sales.dto.role.RoleDTO;
 import com.siganatural.sales.entities.User;
 
 import javax.validation.constraints.Email;

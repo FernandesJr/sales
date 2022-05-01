@@ -1,8 +1,8 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.UserDTO;
-import com.siganatural.sales.dto.UserInsertDTO;
-import com.siganatural.sales.dto.UserUpdateDTO;
+import com.siganatural.sales.dto.user.UserDTO;
+import com.siganatural.sales.dto.user.UserInsertDTO;
+import com.siganatural.sales.dto.user.UserUpdateDTO;
 import com.siganatural.sales.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

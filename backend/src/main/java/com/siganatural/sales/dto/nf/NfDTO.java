@@ -1,4 +1,4 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.nf;
 
 import com.siganatural.sales.entities.Nf;
 

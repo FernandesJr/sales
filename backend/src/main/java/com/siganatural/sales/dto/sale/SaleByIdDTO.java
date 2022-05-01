@@ -1,5 +1,8 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.sale;
 
+import com.siganatural.sales.dto.nf.NfDTO;
+import com.siganatural.sales.dto.product.ProductForSaleDTO;
+import com.siganatural.sales.dto.ticket.TicketDTO;
 import com.siganatural.sales.entities.Ticket;
 import com.siganatural.sales.projections.ProductForSaleProjection;
 import com.siganatural.sales.projections.SaleByIdProjection;

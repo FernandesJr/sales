@@ -1,8 +1,8 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.SaleByIdDTO;
-import com.siganatural.sales.dto.TicketDTO;
-import com.siganatural.sales.dto.TicketNoPaidDTO;
+import com.siganatural.sales.dto.sale.SaleByIdDTO;
+import com.siganatural.sales.dto.ticket.TicketDTO;
+import com.siganatural.sales.dto.ticket.TicketNoPaidDTO;
 import com.siganatural.sales.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

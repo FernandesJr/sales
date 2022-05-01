@@ -1,4 +1,4 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.address;
 
 import com.siganatural.sales.entities.Address;
 

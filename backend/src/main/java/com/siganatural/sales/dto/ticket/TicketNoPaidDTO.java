@@ -1,4 +1,4 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.ticket;
 
 import com.siganatural.sales.projections.TicketNoPaidProjection;
 

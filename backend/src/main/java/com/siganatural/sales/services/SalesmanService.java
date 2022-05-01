@@ -1,6 +1,6 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.SalesmanDashDTO;
+import com.siganatural.sales.dto.salesman.SalesmanDashDTO;
 import com.siganatural.sales.entities.Sale;
 import com.siganatural.sales.entities.Salesman;
 import com.siganatural.sales.entities.User;
@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.TemporalAccessor;
 import java.util.List;
 
 @Service

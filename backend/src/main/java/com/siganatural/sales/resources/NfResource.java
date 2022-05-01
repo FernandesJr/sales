@@ -1,7 +1,7 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.NfDTO;
-import com.siganatural.sales.dto.SaleByIdDTO;
+import com.siganatural.sales.dto.nf.NfDTO;
+import com.siganatural.sales.dto.sale.SaleByIdDTO;
 import com.siganatural.sales.services.NfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

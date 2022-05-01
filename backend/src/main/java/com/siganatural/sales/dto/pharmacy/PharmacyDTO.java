@@ -1,7 +1,7 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.pharmacy;
 
+import com.siganatural.sales.dto.address.AddressDTO;
 import com.siganatural.sales.entities.Pharmacy;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;

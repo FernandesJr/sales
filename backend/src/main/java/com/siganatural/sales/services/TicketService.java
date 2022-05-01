@@ -1,8 +1,8 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.SaleByIdDTO;
-import com.siganatural.sales.dto.TicketDTO;
-import com.siganatural.sales.dto.TicketNoPaidDTO;
+import com.siganatural.sales.dto.sale.SaleByIdDTO;
+import com.siganatural.sales.dto.ticket.TicketDTO;
+import com.siganatural.sales.dto.ticket.TicketNoPaidDTO;
 import com.siganatural.sales.entities.Sale;
 import com.siganatural.sales.entities.Ticket;
 import com.siganatural.sales.projections.TicketNoPaidProjection;

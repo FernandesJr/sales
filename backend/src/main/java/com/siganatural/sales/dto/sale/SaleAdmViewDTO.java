@@ -1,4 +1,4 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.sale;
 
 import com.siganatural.sales.projections.SaleAdmProjection;
 

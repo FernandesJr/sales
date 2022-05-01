@@ -1,6 +1,6 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.RoleDTO;
+import com.siganatural.sales.dto.role.RoleDTO;
 import com.siganatural.sales.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

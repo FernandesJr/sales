@@ -1,4 +1,4 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.role;
 
 import com.siganatural.sales.entities.Role;
 

@@ -1,7 +1,7 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.NfDTO;
-import com.siganatural.sales.dto.SaleByIdDTO;
+import com.siganatural.sales.dto.nf.NfDTO;
+import com.siganatural.sales.dto.sale.SaleByIdDTO;
 import com.siganatural.sales.entities.Nf;
 import com.siganatural.sales.entities.Sale;
 import com.siganatural.sales.repositories.NfRepository;

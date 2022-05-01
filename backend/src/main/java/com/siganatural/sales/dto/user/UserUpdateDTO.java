@@ -1,4 +1,4 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.user;
 
 import com.siganatural.sales.services.validation.UserUpdateValid;
 

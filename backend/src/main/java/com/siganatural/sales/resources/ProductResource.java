@@ -1,6 +1,6 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.ProductDTO;
+import com.siganatural.sales.dto.product.ProductDTO;
 import com.siganatural.sales.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,7 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.SaleAdmViewDTO;
-import com.siganatural.sales.dto.SaleByIdDTO;
-import com.siganatural.sales.dto.SaleDTO;
+import com.siganatural.sales.dto.sale.SaleAdmViewDTO;
+import com.siganatural.sales.dto.sale.SaleByIdDTO;
 import com.siganatural.sales.services.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

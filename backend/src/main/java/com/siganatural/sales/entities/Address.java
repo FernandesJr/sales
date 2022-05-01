@@ -1,6 +1,6 @@
 package com.siganatural.sales.entities;
 
-import com.siganatural.sales.dto.AddressDTO;
+import com.siganatural.sales.dto.address.AddressDTO;
 
 import javax.persistence.*;
 

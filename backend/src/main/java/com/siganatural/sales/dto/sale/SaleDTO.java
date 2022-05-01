@@ -1,5 +1,6 @@
-package com.siganatural.sales.dto;
+package com.siganatural.sales.dto.sale;
 
+import com.siganatural.sales.dto.product.ProductDTO;
 import com.siganatural.sales.entities.Product;
 import com.siganatural.sales.entities.Sale;
 

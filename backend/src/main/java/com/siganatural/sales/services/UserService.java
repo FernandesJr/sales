@@ -1,9 +1,9 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.RoleDTO;
-import com.siganatural.sales.dto.UserDTO;
-import com.siganatural.sales.dto.UserInsertDTO;
-import com.siganatural.sales.dto.UserUpdateDTO;
+import com.siganatural.sales.dto.role.RoleDTO;
+import com.siganatural.sales.dto.user.UserDTO;
+import com.siganatural.sales.dto.user.UserInsertDTO;
+import com.siganatural.sales.dto.user.UserUpdateDTO;
 import com.siganatural.sales.entities.User;
 import com.siganatural.sales.repositories.RoleRepository;
 import com.siganatural.sales.repositories.UserRepository;

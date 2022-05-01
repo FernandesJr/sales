@@ -1,6 +1,6 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.SalesmanDashDTO;
+import com.siganatural.sales.dto.salesman.SalesmanDashDTO;
 import com.siganatural.sales.services.SalesmanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

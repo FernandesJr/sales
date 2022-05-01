@@ -1,6 +1,6 @@
 package com.siganatural.sales.services;
 
-import com.siganatural.sales.dto.AddressDTO;
+import com.siganatural.sales.dto.address.AddressDTO;
 import com.siganatural.sales.entities.Address;
 import com.siganatural.sales.entities.Pharmacy;
 import com.siganatural.sales.repositories.AddressRepository;

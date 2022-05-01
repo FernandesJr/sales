@@ -1,6 +1,6 @@
 package com.siganatural.sales.resources;
 
-import com.siganatural.sales.dto.PharmacyDTO;
+import com.siganatural.sales.dto.pharmacy.PharmacyDTO;
 import com.siganatural.sales.services.PharmacyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
 package com.siganatural.sales.services.validation;
 
-import com.siganatural.sales.dto.UserInsertDTO;
+import com.siganatural.sales.dto.user.UserInsertDTO;
 import com.siganatural.sales.entities.User;
 import com.siganatural.sales.repositories.UserRepository;
 import com.siganatural.sales.resources.exception.FieldMessage;
