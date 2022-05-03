@@ -10,6 +10,7 @@ import com.siganatural.sales.projections.SaleAdmProjection;
 import com.siganatural.sales.projections.SaleByIdProjection;
 import com.siganatural.sales.repositories.*;
 import com.siganatural.sales.services.exceptions.DataBaseException;
+import com.siganatural.sales.services.exceptions.ForbiddenException;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,21 +108,24 @@ public class SaleService {
         if(verification != null){
             throw new DataBaseException("Integrity violation");
         }
+        //Verificar se a Sale existe
+        User user = authService.userAuthenticated();
+        Salesman salesman = salesmanRepository.findByUser(user);
+        Long owner = repository.verificationSalesman(id);
+        if(owner == null){
+            throw new ResourceNotFoundException("Entity not found by id " + id);
+        }
+        //Verificar se o Salesman é o dono da venda
+        if(owner != salesman.getId()){
+            throw new ForbiddenException("Access denied");
+        }
         this.delete(id);
     }
 
-    //Não usei o transactional aqui, na quebra de integridade estoura uma exception que não é tratada pela transactional
+    //Não colocar o transactional erda a transação do método pai
     public void delete(Long id){
         Sale sale = new Sale(id);
-        try {
-            saleProductRepository.deleteBySale(sale);
-            repository.deleteById(id);
-        } catch (EmptyResultDataAccessException e){
-            //Caso o id não tenha na bd
-            throw new ResourceNotFoundException("Entity not found by id "+id);
-        } catch (DataIntegrityViolationException d){
-            //Caso tenho alguma outra tabela com relacionamento a Sale não pode ser excluída
-            throw new DataBaseException("Integrity violation");
-        }
+        saleProductRepository.deleteBySale(sale);
+        repository.deleteById(id);
     }
 }

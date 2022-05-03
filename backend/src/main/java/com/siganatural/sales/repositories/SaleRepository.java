@@ -59,7 +59,7 @@ public interface SaleRepository extends PagingAndSortingRepository<Sale, Long> {
             "SALE.DATE BETWEEN :start AND :last")
     List<Sale> findByMouthSalesman(Long salesman, LocalDateTime start, LocalDateTime last);
 
-    @Query(nativeQuery = true, value = "" +
+    @Query(nativeQuery = true, value =
             "SELECT DISTINCT SALE.ID FROM SALE " +
             "LEFT JOIN NF ON " +
             "NF.SALE_ID = SALE.ID " +
@@ -68,5 +68,9 @@ public interface SaleRepository extends PagingAndSortingRepository<Sale, Long> {
             "WHERE NF.SALE_ID = :id OR TICKET.SALE_ID = :id")
     Long verificationIntegrity(Long id);
 
+    @Query(nativeQuery = true, value =
+            "SELECT SALE.SALESMAN_ID FROM SALE " +
+            "WHERE SALE.ID = :saleId")
+    Long verificationSalesman(Long saleId);
 
 }
