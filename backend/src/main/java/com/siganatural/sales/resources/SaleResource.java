@@ -1,7 +1,9 @@
 package com.siganatural.sales.resources;
 
+import com.siganatural.sales.dto.product.ProductSaleDTO;
 import com.siganatural.sales.dto.sale.SaleAdmViewDTO;
 import com.siganatural.sales.dto.sale.SaleByIdDTO;
+import com.siganatural.sales.dto.sale.SaleInsertDTO;
 import com.siganatural.sales.services.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,5 +31,11 @@ public class SaleResource {
     public ResponseEntity<SaleByIdDTO> findSale(@PathVariable Long id){
         SaleByIdDTO sale = service.findSaleWithProductsAndTickets(id);
         return ResponseEntity.ok(sale);
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> insert(@RequestBody SaleInsertDTO dto){
+        service.insert(dto);
+        return ResponseEntity.noContent().build();
     }
 }

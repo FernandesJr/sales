@@ -12,4 +12,6 @@ public interface PharmacyRepository extends JpaRepository<Pharmacy, Long> {
 
     @Query("SELECT obj FROM Pharmacy obj WHERE LOWER(obj.name) LIKE LOWER(CONCAT('%',:name,'%'))")
     Page<Pharmacy> findAllOrByName(Pageable pageable, String name);
+
+    Pharmacy findByCnpj(String cnpj);
 }
