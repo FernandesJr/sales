@@ -1,5 +1,6 @@
 package com.siganatural.sales.resources.exception;
 
+import com.siganatural.sales.services.exceptions.DataBaseException;
 import com.siganatural.sales.services.exceptions.ForbiddenException;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
 import com.siganatural.sales.services.exceptions.UnauthorizedException;
@@ -47,6 +48,18 @@ public class ResouceExceptionHandler {
         error.setTimestamp(Instant.now());
         error.setStatus(status.value());
         error.setError("Unauthorized");
+        error.setMessage(e.getMessage());
+        error.setPath(request.getRequestURI());
+        return ResponseEntity.status(status).body(error);
+    }
+
+    @ExceptionHandler(DataBaseException.class) //Capturando exception específica
+    public ResponseEntity<StandardError> database(DataBaseException e, HttpServletRequest request){
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        StandardError error = new StandardError();
+        error.setTimestamp(Instant.now());
+        error.setStatus(status.value());
+        error.setError("Data base exception");
         error.setMessage(e.getMessage());
         error.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(error);

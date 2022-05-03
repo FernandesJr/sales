@@ -38,4 +38,10 @@ public class SaleResource {
         service.insert(dto);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.verificationDelete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

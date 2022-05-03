@@ -9,14 +9,19 @@ import com.siganatural.sales.projections.ProductForSaleProjection;
 import com.siganatural.sales.projections.SaleAdmProjection;
 import com.siganatural.sales.projections.SaleByIdProjection;
 import com.siganatural.sales.repositories.*;
+import com.siganatural.sales.services.exceptions.DataBaseException;
 import com.siganatural.sales.services.exceptions.ResourceNotFoundException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -72,18 +77,16 @@ public class SaleService {
         sale.setPharmacy(pharmacy);
         sale.setDate(date);
         sale.setFormPay(dto.getFormPay());
-        Double aux = 0D;
+        Double amount = 0D;
         for (ProductSaleDTO p : dto.getProducts()) {
             if(p.getQuantity() != 0){
                 Product product = productRepository.findById(p.getProductId()).orElseThrow(() -> new ResourceNotFoundException("Entity Product "+p.getProductId()+" not found"));
-                aux += product.getPrice() * p.getQuantity();
-                System.out.println(p);
+                amount += product.getPrice() * p.getQuantity();
             }
         }
-        sale.setAmount(aux);
+        sale.setAmount(amount);
         sale = repository.save(sale);
 
-        aux = 0D;
         for (ProductSaleDTO p : dto.getProducts()) {
             if(p.getQuantity() != 0){
                 Product product = productRepository.findById(p.getProductId()).orElseThrow(() -> new ResourceNotFoundException("Entity Product "+p.getProductId()+" not found"));
@@ -94,6 +97,31 @@ public class SaleService {
                 saleProduct.setQuantityProduct(p.getQuantity());
                 saleProductRepository.save(saleProduct);
             }
+        }
+    }
+
+    @Transactional
+    public void verificationDelete(Long id){
+        //Verifica se a Sale contém algum relacionamento com as tabelas NF ou TICKET
+        Long verification = repository.verificationIntegrity(id);
+        if(verification != null){
+            throw new DataBaseException("Integrity violation");
+        }
+        this.delete(id);
+    }
+
+    //Não usei o transactional aqui, na quebra de integridade estoura uma exception que não é tratada pela transactional
+    public void delete(Long id){
+        Sale sale = new Sale(id);
+        try {
+            saleProductRepository.deleteBySale(sale);
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e){
+            //Caso o id não tenha na bd
+            throw new ResourceNotFoundException("Entity not found by id "+id);
+        } catch (DataIntegrityViolationException d){
+            //Caso tenho alguma outra tabela com relacionamento a Sale não pode ser excluída
+            throw new DataBaseException("Integrity violation");
         }
     }
 }
