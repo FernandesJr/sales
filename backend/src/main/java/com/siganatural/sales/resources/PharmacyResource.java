@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/pharmacies")
+@RequestMapping("/api/pharmacies")
 public class PharmacyResource {
 
     @Autowired
