@@ -1,6 +1,7 @@
 package com.siganatural.sales.components;
 
 import com.siganatural.sales.entities.User;
+import com.siganatural.sales.repositories.RoleRepository;
 import com.siganatural.sales.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
@@ -18,6 +19,9 @@ public class JwtTokenEnhancer implements TokenEnhancer {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     //Adicionando mais atributos ao Token
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
@@ -26,6 +30,7 @@ public class JwtTokenEnhancer implements TokenEnhancer {
         Map<String, Object> map =  new HashMap<>();
         map.put("firstName", user.getFirstName());
         map.put("userId", user.getId());
+        map.put("userRoles", user.getRoles());
 
         DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) oAuth2AccessToken; //Um tipo da mesma implementação, porém mais específico
         token.setAdditionalInformation(map);
